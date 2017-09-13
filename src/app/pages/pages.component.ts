@@ -7,7 +7,7 @@ import { Routes } from '@angular/router';
 @Component({
   selector: 'pages',
   template: `
-   <!-- <ba-sidebar></ba-sidebar>
+   <ba-sidebar></ba-sidebar>
     <ba-page-top></ba-page-top>
     <div class="al-main">
       <div class="al-content">
@@ -27,9 +27,7 @@ import { Routes } from '@angular/router';
         </ul>
       </div>
     </footer>
-    <ba-back-top position="200"></ba-back-top> -->
-    <h1>Mainpage!!!!!!!!!!<h1>
-    <router-outlet></router-outlet>
+    <ba-back-top position="200"></ba-back-top>
     `
 })
 export class Pages {
