@@ -9,6 +9,15 @@ import { PagesModule } from './pages/pages.module';
 import { AppComponent } from './app.component';
 import { NgaModule } from './theme/nga.module';
 
+import { GlobalState } from './global.state';
+
+
+// Application wide providers
+const APP_PROVIDERS = [
+ // AppState,
+  GlobalState
+];
+
 @NgModule({
   declarations: [
     AppComponent
@@ -24,7 +33,9 @@ import { NgaModule } from './theme/nga.module';
     routing,
     PagesModule
   ],
-  providers: [],
+  providers: [ // expose our Services and Providers into Angular's dependency injection
+    APP_PROVIDERS
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
