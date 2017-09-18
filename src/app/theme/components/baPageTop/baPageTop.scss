@@ -1,5 +1,5 @@
 @import '../../sass/conf/conf';
-// @import '../../components/baMsgCenter/baMsgCenter';  
+@import '../../components/baMsgCenter/baMsgCenter';  
 
 :host /deep/ {
 
@@ -98,7 +98,7 @@
   }
 
   a.collapse-menu-link {
-    font-size: 31px;
+    font-size: 25px;
     cursor: pointer;
     display: block;
     text-decoration: none;
