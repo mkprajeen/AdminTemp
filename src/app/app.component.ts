@@ -26,6 +26,7 @@ export class AppComponent {
       themeConfig.config();
   
       this._loadImages();
+
   
       this._state.subscribe('menu.isCollapsed', (isCollapsed) => {
         this.isMenuCollapsed = isCollapsed;
