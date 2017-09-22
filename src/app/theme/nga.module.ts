@@ -2,6 +2,7 @@ import { NgModule, ModuleWithProviders }      from '@angular/core';
 import { CommonModule }  from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { AppTranslationModule } from '../app.translation.module';
 
 import {    BaThemeConfig  } from './theme.config';
 import {  BaThemeConfigProvider } from './theme.configProvider';
@@ -14,7 +15,7 @@ import {
 
 import {
   //BaImageLoaderService,
-  //BaMenuService,
+  BaMenuService,
   BaThemePreloader,
   BaThemeSpinner
 } from './services';
@@ -27,8 +28,8 @@ import {
      //BaCheckbox,
      BaContentTop,
     // BaFullCalendar,
-     //BaMenuItem,
-     //BaMenu,
+     BaMenuItem,
+     BaMenu,
      //BaMsgCenter,
      //BaMultiCheckbox,
      BaPageTop,
@@ -44,8 +45,8 @@ import {
     //BaCheckbox,
     BaContentTop,
     //BaFullCalendar,
-    //BaMenuItem,
-    //BaMenu,
+    BaMenuItem,
+    BaMenu,
     //BaMsgCenter,
     //BaMultiCheckbox,
     BaPageTop,
@@ -65,7 +66,7 @@ import {
     //BaImageLoaderService,
     BaThemePreloader,
     BaThemeSpinner,
-    //BaMenuService
+    BaMenuService
   ];
 
   @NgModule({
@@ -79,7 +80,7 @@ import {
       RouterModule,
       FormsModule,
       ReactiveFormsModule,
-     // AppTranslationModule,
+      AppTranslationModule
      //NgUploaderModule
     ],
     exports: [

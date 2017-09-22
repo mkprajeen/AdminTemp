@@ -2,7 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ApplicationRef } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule} from "@angular/common/http";
+import { TranslateService } from '@ngx-translate/core';
 import { routing } from './app.routing';
 import { PagesModule } from './pages/pages.module';
 
@@ -25,7 +26,7 @@ const APP_PROVIDERS = [
   imports: [
     BrowserModule,
     BrowserModule,
-    HttpModule,
+    HttpClientModule,
     RouterModule,
     FormsModule,
     ReactiveFormsModule,

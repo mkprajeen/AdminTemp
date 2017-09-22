@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Routes } from '@angular/router';
 
-//import { BaMenuService } from '../theme';
-//import { PAGES_MENU } from './pages.menu';
+import { BaMenuService } from '../theme';
+import { PAGES_MENU } from './pages.menu';
 
 @Component({
   selector: 'pages',
@@ -16,14 +16,14 @@ import { Routes } from '@angular/router';
       </div>
     </div>
     <footer class="al-footer clearfix">
-      <div class="al-footer-right" translate>{{'general.created_with'}} <i class="ion-heart"></i></div>
+      <div class="al-footer-right" translate>{{'general.created_with'}} <i class="fa fa-heart"></i></div>
       <div class="al-footer-main clearfix">
-        <div class="al-copy">&copy; <a href="http://akveo.com" translate>{{'general.akveo'}}</a> 2016</div>
+        <div class="al-copy">&copy; <a href="http://akveo.com" translate>{{'general.copyright_info'}}</a> 2017</div>
         <ul class="al-share clearfix">
-          <li><i class="socicon socicon-facebook"></i></li>
-          <li><i class="socicon socicon-twitter"></i></li>
-          <li><i class="socicon socicon-google"></i></li>
-          <li><i class="socicon socicon-github"></i></li>
+          <li><i class="fa fa-facebook"></i></li>
+          <li><i class="fa fa-twitter"></i></li>
+          <li><i class="fa fa-google"></i></li>
+          <li><i class="fa fa-github"></i></li>
         </ul>
       </div>
     </footer>
@@ -32,10 +32,10 @@ import { Routes } from '@angular/router';
 })
 export class Pages {
 
-  // constructor(private _menuService: BaMenuService,) {
-  // }
+  constructor(private _menuService: BaMenuService,) {
+  }
 
-  // ngOnInit() {
-  //   this._menuService.updateMenuByRoutes(<Routes>PAGES_MENU);
-  // }
+  ngOnInit() {
+    this._menuService.updateMenuByRoutes(<Routes>PAGES_MENU);
+  }
 }
