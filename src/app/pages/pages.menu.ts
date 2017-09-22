@@ -18,7 +18,7 @@ export const PAGES_MENU = [
         path: 'MainMenu1',
         data: {
           menu: {
-            title: 'general.menu.editors',
+            title: 'general.menu.menu_level_1',
             icon: 'fa fa-edit',
             selected: false,
             expanded: false,
@@ -30,7 +30,15 @@ export const PAGES_MENU = [
             path: 'SubMenu1',
             data: {
               menu: {
-                title: 'general.menu.ck_editor',
+                title: 'general.menu.menu_level_1_1',
+              }
+            }
+          },
+          {
+            path: 'SubMenu2',
+            data: {
+              menu: {
+                title: 'general.menu.menu_level_1_2',
               }
             }
           }
@@ -73,7 +81,7 @@ export const PAGES_MENU = [
           menu: {
             title: 'general.menu.external_link',
             url: 'http://google.com',
-            icon: 'ion-android-exit',
+            icon: 'fa fa-heart',
             order: 800,
             target: '_blank'
           }
