@@ -38,7 +38,7 @@ import {
      //BaFileUploader
    } from './components';
 
-   const NGA_COMPONENTS = [
+   const THEME_COMPONENTS = [
     //BaAmChart,
     BaBackTop,
     //BaCard,
@@ -55,14 +55,14 @@ import {
     //BaFileUploader
   ];
 
-  const NGA_DIRECTIVES = [
+  const THEME_DIRECTIVES = [
     BaScrollPosition,
     BaSlimScroll,
     BaThemeRun,
     //BaCardBlur
   ];
 
-  const NGA_SERVICES = [
+  const THEME_SERVICES = [
     //BaImageLoaderService,
     BaThemePreloader,
     BaThemeSpinner,
@@ -72,8 +72,8 @@ import {
   @NgModule({
     declarations: [
       //...NGA_PIPES,
-      ...NGA_DIRECTIVES,
-      ...NGA_COMPONENTS
+      ...THEME_DIRECTIVES,
+      ...THEME_COMPONENTS
     ],
     imports: [
       CommonModule,
@@ -85,19 +85,19 @@ import {
     ],
     exports: [
      // ...NGA_PIPES,
-      ...NGA_DIRECTIVES,
-      ...NGA_COMPONENTS
+      ...THEME_DIRECTIVES,
+      ...THEME_COMPONENTS
     ]
   })
-  export class NgaModule {
+  export class ThemeModule {
     static forRoot(): ModuleWithProviders {
       return <ModuleWithProviders> {
-        ngModule: NgaModule,
+        ngModule: ThemeModule,
         providers: [
           BaThemeConfigProvider,
           BaThemeConfig,
           //...NGA_VALIDATORS,
-          ...NGA_SERVICES
+          ...THEME_SERVICES
         ],
       };
     }

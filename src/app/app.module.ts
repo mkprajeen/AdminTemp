@@ -8,7 +8,7 @@ import { routing } from './app.routing';
 import { PagesModule } from './pages/pages.module';
 
 import { AppComponent } from './app.component';
-import { NgaModule } from './theme/nga.module';
+import { ThemeModule } from './theme/theme.module';
 
 import { GlobalState } from './global.state';
 
@@ -30,7 +30,7 @@ const APP_PROVIDERS = [
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
-    NgaModule.forRoot(),
+    ThemeModule.forRoot(),
     routing,
     PagesModule
   ],
