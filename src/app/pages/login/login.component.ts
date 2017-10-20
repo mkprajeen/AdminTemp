@@ -1,5 +1,10 @@
-import {Component} from '@angular/core';
-import {FormGroup, AbstractControl, FormBuilder, Validators} from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+
+import { Global } from '../../global';
+import { GlobalState } from '../../global.state';
+import { AuthenticationService, AuthenticationStore } from '../../auth';
 
 @Component({
   selector: 'login',
@@ -8,14 +13,20 @@ import {FormGroup, AbstractControl, FormBuilder, Validators} from '@angular/form
 })
 export class Login {
 
-  public form:FormGroup;
-  public email:AbstractControl;
-  public password:AbstractControl;
-  public submitted:boolean = false;
+  public form: FormGroup;
+  public email: AbstractControl;
+  public password: AbstractControl;
+  public submitted: boolean = false;
 
-  constructor(fb:FormBuilder) {
+  errorMessage: string;
+
+  constructor(fb: FormBuilder,
+    private router: Router,
+    private authServ: AuthenticationService,
+    private authStore: AuthenticationStore,
+    private state: GlobalState) {
     this.form = fb.group({
-      'email': ['', Validators.compose([Validators.required, Validators.minLength(4)])],
+      'email': ['', Validators.compose([Validators.required, Validators.minLength(2)])],
       'password': ['', Validators.compose([Validators.required, Validators.minLength(4)])]
     });
 
@@ -23,11 +34,36 @@ export class Login {
     this.password = this.form.controls['password'];
   }
 
-  public onSubmit(values:Object):void {
+  public onSubmit(values: Object): void {
     this.submitted = true;
     if (this.form.valid) {
-      // your code goes here
-      // console.log(values);
+      // your code goes here    
+
+      this.authServ.post(Global.BASE_TEMPLATE_ENDPOINT + 'TokenAuthentication/Token', { user: this.email.value, password: this.password.value })
+        .subscribe(token => {
+          if (token.access_token != null) {
+            // this.authStore.setToken(token.access_token);
+            this.authStore.token = token.access_token;
+            this.authStore.LoggedIn = true;
+            //this.uiNotServ.LoggedIn.next(true);
+            var appUserId = token.AppUser.ApplicationUserId
+            //TODO: get user details and user profile info
+            this.authServ.getUser(Global.BASE_TEMPLATE_ENDPOINT + 'users/GetUserByApplicationUserId?Id=' + appUserId)
+              .subscribe(user => {
+                this.state.notifyDataChanged("logged.user", user);
+                this.authStore.UserDetail = user;
+              },
+              error => {
+                this.errorMessage = <any>error;
+                console.log(this.errorMessage);
+              });
+
+            this.router.navigate(['/home']);
+          }
+        },
+        error => this.errorMessage = <any>error);
     }
+
+    console.log(values);
   }
 }

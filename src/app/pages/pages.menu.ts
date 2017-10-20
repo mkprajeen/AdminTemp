@@ -32,7 +32,16 @@ export const PAGES_MENU = [
               menu: {
                 title: 'general.menu.menu_level_1_1',
               }
-            }
+            },
+            children: [
+              {
+                path: 'SubMenu2',
+                data: {
+                  menu: {
+                    title: 'general.menu.menu_level_2_1',
+                  }
+                }
+              }]
           },
           {
             path: 'SubMenu2',

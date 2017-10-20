@@ -12,7 +12,7 @@
     <div class="dropdown al-user-profile">
       <a class="profile-toggle-link dropdown-toggle" id="user-profile-dd" data-toggle="dropdown" aria-expanded="false">
         <!-- <img src="{{ ( 'Nasta' | baProfilePicture ) }}"> -->
-        <img src="../favicon.ico">
+        <img [src]="userPhoto" style="border-radius:50%;height:30px;width:30px">
       </a>
       <ul class="dropdown-menu top-dropdown-menu profile-dropdown" aria-labelledby="user-profile-dd">
         <li class="dropdown-item"><a href><i class="fa fa-user"></i>Profile</a></li>
