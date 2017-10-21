@@ -42,23 +42,26 @@ export class Login {
       this.authServ.post(Global.BASE_TEMPLATE_ENDPOINT + 'TokenAuthentication/Token', { user: this.email.value, password: this.password.value })
         .subscribe(token => {
           if (token.access_token != null) {
-            // this.authStore.setToken(token.access_token);
             this.authStore.token = token.access_token;
             this.authStore.LoggedIn = true;
-            //this.uiNotServ.LoggedIn.next(true);
+            sessionStorage.setItem("token",token.access_token);
+            sessionStorage.setItem("LoggedIn","true");
+
             var appUserId = token.AppUser.ApplicationUserId
             //TODO: get user details and user profile info
-            this.authServ.getUser(Global.BASE_TEMPLATE_ENDPOINT + 'users/GetUserByApplicationUserId?Id=' + appUserId)
+            this.authServ.get(Global.BASE_TEMPLATE_ENDPOINT + 'users/GetUserByApplicationUserId?Id=' + appUserId)
               .subscribe(user => {
                 this.state.notifyDataChanged("logged.user", user);
-                this.authStore.UserDetail = user;
+                this.authStore.UserDetail = user ;
+                sessionStorage.setItem("UserDetail",JSON.stringify(user));
+                
               },
               error => {
                 this.errorMessage = <any>error;
                 console.log(this.errorMessage);
               });
 
-            this.router.navigate(['/home']);
+            this.router.navigate(['/dashboard']);
           }
         },
         error => this.errorMessage = <any>error);

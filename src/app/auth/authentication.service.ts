@@ -6,15 +6,21 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 
+import {GlobalState} from '../global.state';
+import {BaThemeSpinner} from '../theme/services'
+
 @Injectable()
 export class AuthenticationService {
 
-    constructor(private _http: HttpClient) {
+    constructor(private _http: HttpClient, private _spinner: BaThemeSpinner) {
 
     }
     get(url: string): Observable<any> {
+      this._spinner.show();
         return this._http.get(url)
-            .map((response: Response) => <any>response.json())
+            .map((response: Response) => { 
+                this._spinner.hide();
+                return <any>response;})
             .catch(this.handleError);
 
     }
@@ -24,16 +30,9 @@ export class AuthenticationService {
             .catch(this.handleError);
 
     }
-    getUser(url: string): Observable<any> {
-
-        return this._http.get(url)
-            .do(console.log)
-            .map((response) => response)
-            .catch(this.handleError);
-
-    }
     private handleError(error) {
         console.error(error);
+        this._spinner.hide();
         return Observable.throw(error || 'Server error');
     }
    

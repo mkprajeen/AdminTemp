@@ -23,6 +23,26 @@ export class AuthenticationStore {
     private store = new BehaviorSubject<Array<State>>([]);
     private store$ = this.store.asObservable();
 
+    /**
+     *
+     */
+    constructor() {
+      console.log("authentication store ctor");
+      if(sessionStorage.getItem("token"))
+        {
+             this.token = sessionStorage.getItem("token");
+        }
+      if(sessionStorage.getItem("LoggedIn") =="true")
+       {
+         this.LoggedIn = true;
+       }
+      if(sessionStorage.getItem("UserDetail"))
+      {
+        this.UserDetail= JSON.parse(sessionStorage.getItem("UserDetail"));    
+      }
+
+    }
+
     setToken(token: string): any {
         this.token = token;
         this.token$.next(token);
