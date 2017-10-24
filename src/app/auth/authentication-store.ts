@@ -18,10 +18,10 @@ export class AuthenticationStore {
     public token: string;
     public LoggedIn: boolean = false;
     public UserDetail: any;
-    protected token$ = new BehaviorSubject<string>(this.token);
+   // protected token$ = new BehaviorSubject<string>(this.token);
 
-    private store = new BehaviorSubject<Array<State>>([]);
-    private store$ = this.store.asObservable();
+    //private store = new BehaviorSubject<Array<State>>([]);
+    //private store$ = this.store.asObservable();
 
     /**
      *
@@ -43,17 +43,17 @@ export class AuthenticationStore {
 
     }
 
-    setToken(token: string): any {
-        this.token = token;
-        this.token$.next(token);
-    }
-    getToken(): Observable<string> {
-        return Observable.of(this.token);
-    }
+    // setToken(token: string): any {
+    //     this.token = token;
+    //     this.token$.next(token);
+    // }
+    // getToken(): Observable<string> {
+    //     return Observable.of(this.token);
+    // }
 
-    getState(key: string): Observable<any>
-    {
-        let retval = this.store
-        return Observable.of(this.store.value);
-    }
+    // getState(key: string): Observable<any>
+    // {
+    //     let retval = this.store
+    //     return Observable.of(this.store.value);
+    // }
 }

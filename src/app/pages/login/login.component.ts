@@ -39,7 +39,7 @@ export class Login {
     if (this.form.valid) {
       // your code goes here    
 
-      this.authServ.post(Global.BASE_TEMPLATE_ENDPOINT + 'TokenAuthentication/Token', { user: this.email.value, password: this.password.value })
+      this.authServ.post(Global.BASE_TEMPLATE_ENDPOINT + 'TokenAuthentication/Token', { email: this.email.value, password: this.password.value })
         .subscribe(token => {
           if (token.access_token != null) {
             this.authStore.token = token.access_token;
