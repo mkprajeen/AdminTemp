@@ -15,10 +15,10 @@ export const PAGES_MENU = [
         }
       },
       {
-        path: 'MainMenu1',
+        path: 'PatientEncounter',
         data: {
           menu: {
-            title: 'general.menu.menu_level_1',
+            title: 'general.menu.patientencounter',
             icon: 'fa fa-edit',
             selected: false,
             expanded: false,
@@ -27,27 +27,18 @@ export const PAGES_MENU = [
         },
         children: [
           {
-            path: 'SubMenu1',
+            path: 'PatientListComponent',
             data: {
               menu: {
-                title: 'general.menu.menu_level_1_1',
+                title: 'general.menu.patientlist',
               }
-            },
-            children: [
-              {
-                path: 'SubMenu2',
-                data: {
-                  menu: {
-                    title: 'general.menu.menu_level_2_1',
-                  }
-                }
-              }]
+            }            
           },
           {
-            path: 'SubMenu2',
+            path: 'EncounterList',
             data: {
               menu: {
-                title: 'general.menu.menu_level_1_2',
+                title: 'general.menu.encounterlist',
               }
             }
           }
