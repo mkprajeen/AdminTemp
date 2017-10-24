@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/finally';
 import 'rxjs/add/observable/throw';
 
 import {GlobalState} from '../global.state';
@@ -21,18 +22,25 @@ export class AuthenticationService {
             .map((response: Response) => { 
                 this._spinner.hide();
                 return <any>response;})
-            .catch(this.handleError);
+            .catch(this.handleError)
+            .finally(()=>
+            {
+                this._spinner.hide();
+            });
 
     }
     post(url: string,model:any): Observable<any> {
+        this._spinner.show();
         return this._http.post(url, model)
             .map((response) => response)
-            .catch(this.handleError);
+            .catch(this.handleError).finally(()=>
+            {
+                this._spinner.hide();
+            });
 
     }
     private handleError(error) {
-        console.error(error);
-        this._spinner.hide();
+        console.error(error);       
         return Observable.throw(error || 'Server error');
     }
    

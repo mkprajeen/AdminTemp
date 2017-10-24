@@ -10,7 +10,7 @@ export class AuthenticationInterceptor implements HttpInterceptor {
     constructor(private authStore:AuthenticationStore)
     { }
 
-    intercept(req: HttpRequest<any>, next: HttpHandler)
+    intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>>
     {
         if(this.authStore.token)
         {
