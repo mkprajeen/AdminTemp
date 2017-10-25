@@ -6,7 +6,7 @@ import { ThemeModule } from '../theme/theme.module';
 import { AppTranslationModule } from '../app.translation.module';
 
 import { Pages } from './pages.component';
-//import { PatientListComponent} from './patient/patient-list';
+
 
 
 @NgModule({

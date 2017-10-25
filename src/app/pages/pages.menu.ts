@@ -15,7 +15,7 @@ export const PAGES_MENU = [
         }
       },
       {
-        path: 'PatientEncounter',
+        path: 'patient',
         data: {
           menu: {
             title: 'general.menu.patientencounter',
@@ -27,7 +27,7 @@ export const PAGES_MENU = [
         },
         children: [
           {
-            path: 'PatientListComponent',
+            path: 'patient-list',
             data: {
               menu: {
                 title: 'general.menu.patientlist',
@@ -35,7 +35,7 @@ export const PAGES_MENU = [
             }            
           },
           {
-            path: 'EncounterList',
+            path: 'encounter-list',
             data: {
               menu: {
                 title: 'general.menu.encounterlist',

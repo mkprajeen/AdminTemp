@@ -21,7 +21,7 @@ export const routes: Routes = [
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'dashboard', canActivate: [AuthenticationGuard], loadChildren: './dashboard/dashboard.module#DashboardModule' },
-      { path: 'dashboard', canActivate: [AuthenticationGuard], loadChildren: './patient/patient.module#PatientModule' },
+      { path: 'patient', canActivate: [AuthenticationGuard], loadChildren: './patient/patient.module#PatientModule' },
  
     ]
   }
