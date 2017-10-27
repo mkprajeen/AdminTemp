@@ -5,11 +5,13 @@ import {routing} from './patient.routing'
 import {Patient} from './patient.component'
 import {PatientListComponent} from './patient-list';
 import { EncounterListComponent } from './encounter-list'
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 @NgModule({
   imports: [
     CommonModule,
-    routing
+    routing,
+    NgxDatatableModule,
   ],
   declarations: [
     Patient,
