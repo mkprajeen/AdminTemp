@@ -1,6 +1,4 @@
-<p>
-  patient-list works!
-</p>
+
 <div>
 <ngx-datatable  
 
@@ -11,7 +9,11 @@
 [headerHeight]="50"
 [footerHeight]="50"
 [rowHeight]="'auto'"
-[limit]="10"
+[externalPaging]="true"
+[count]="totalItems"
+[offset]="currentPage"
+[limit]="pageSize"
+(page)='setPage($event)'>"
 
 >
 </ngx-datatable>

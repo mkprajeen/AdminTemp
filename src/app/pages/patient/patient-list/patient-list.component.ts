@@ -15,34 +15,36 @@ export class PatientListComponent implements OnInit {
   selected = [];
   loadingIndicator: boolean = true;
   reorderable: boolean = true;
-  // columns = [
-  //   { prop: 'name' },
-  //   { name: 'Gender' },
-  //   { name: 'Company' }
-  //   ];
+  pageSize:number;
+  currentPage:number;
+  totalItems:number;
 
-    columns = [
+   columns = [
       { prop: 'PatientId' },
       { prop: 'FirstName' },
       { prop: 'LastName' }
       ];
   constructor( private _service:AuthenticationService ) {
-
-      // this.rows = [
-      // { PatientId: '10', FirstName: 'prajeen', LastName: 'kumar' },
-      // { PatientId: '20', FirstName: 'ravan', LastName: 'sathi' },
-      // { PatientId: '30', FirstName: 'vasu', LastName: 'dev' },
-      // ];
-    
+    this.currentPage=0;
+    this.pageSize =10;     
    }
 
   ngOnInit() {
-    this._service.get(Global.BASE_TEMPLATE_ENDPOINT + 'patients')
-    .subscribe(patient => {
-      this.rows=patient;
+    // this._service.get(Global.BASE_TEMPLATE_ENDPOINT + 'patients')
+    // .subscribe(patient => {
+    //   this.rows=patient;
+    // });
+    this.setPage({ offset: 0 });
+  }
+  setPage(pageInfo){
+    this.currentPage = pageInfo.offset ;
+
+    this._service.get(Global.BASE_TEMPLATE_ENDPOINT + 'patients/GetAllPagedPatients?page='+this.currentPage+'&pagesize='+this.pageSize  )
+    .subscribe(pagedData => {
+      this.rows=pagedData.Results;
+      this.totalItems = pagedData.TotalItems;
     });
   }
-
  
 
 }
