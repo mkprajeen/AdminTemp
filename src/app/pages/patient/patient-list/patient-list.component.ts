@@ -45,14 +45,14 @@ export class PatientListComponent implements OnInit {
     var url;
     if (this.orderBy) { 
       if(this.orderByDesc){
-       url = Global.BASE_TEMPLATE_ENDPOINT + 'patients/GetAllPagedPatients?page=' + this.currentPage + '&pagesize=' + this.pageSize +'&orderBy='+ this.orderBy +'&orderByDesc=' + this.orderByDesc ;
+       url = Global.BASE_TEMPLATE_ENDPOINT + 'patients/GetAllPagedPatients?offset=' + this.currentPage + '&limit=' + this.pageSize +'&orderBy='+ this.orderBy +'&orderByDesc=' + this.orderByDesc ;
       }
       else{
-        url = Global.BASE_TEMPLATE_ENDPOINT + 'patients/GetAllPagedPatients?page=' + this.currentPage + '&pagesize=' + this.pageSize +'&orderBy='+ this.orderBy ; 
+        url = Global.BASE_TEMPLATE_ENDPOINT + 'patients/GetAllPagedPatients?offset=' + this.currentPage + '&limit=' + this.pageSize +'&orderBy='+ this.orderBy ; 
       }
     }
     else {
-       url = Global.BASE_TEMPLATE_ENDPOINT + 'patients/GetAllPagedPatients?page=' + this.currentPage + '&pagesize=' + this.pageSize;
+       url = Global.BASE_TEMPLATE_ENDPOINT + 'patients/GetAllPagedPatients?offset=' + this.currentPage + '&limit=' + this.pageSize;
     }
     this._service.get(url)
       .subscribe(pagedData => {
