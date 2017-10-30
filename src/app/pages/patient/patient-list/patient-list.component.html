@@ -1,7 +1,7 @@
 
 <div>
 <ngx-datatable  
-
+class="dark"
 [rows]="rows"
 [columns]="columns"
 
@@ -13,8 +13,7 @@
 [count]="totalItems"
 [offset]="currentPage"
 [limit]="pageSize"
-(page)='setPage($event)'>"
-
->
+(page)='setPage($event)'
+(sort)="onSort($event)">
 </ngx-datatable>
 </div>
