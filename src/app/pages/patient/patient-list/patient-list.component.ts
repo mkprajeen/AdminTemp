@@ -31,6 +31,7 @@ export class PatientListComponent implements OnInit {
   constructor(private _service: AuthenticationService) {
     this.currentPage = 0;
     this.pageSize = 10;
+    this.totalItems =0;
   }
 
   ngOnInit() {
