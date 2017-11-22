@@ -18,7 +18,7 @@ import { PAGES_MENU } from './pages.menu';
     <footer class="al-footer clearfix">
       <div class="al-footer-right" translate>{{'general.created_with'}} <i class="fa fa-heart"></i></div>
       <div class="al-footer-main clearfix">
-        <div class="al-copy">&copy; <a href="http://akveo.com" translate>{{'general.copyright_info'}}</a> 2017</div>
+        <div class="al-copy">&copy; <a href="https://www.linkedin.com/in/prajeenkumar/" translate>{{'general.copyright_info'}}</a> 2017</div>
         <ul class="al-share clearfix">
           <li><i class="fa fa-facebook"></i></li>
           <li><i class="fa fa-twitter"></i></li>
