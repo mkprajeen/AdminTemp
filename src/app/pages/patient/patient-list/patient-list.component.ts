@@ -72,5 +72,23 @@ export class PatientListComponent implements OnInit {
     this.setPage({ offset: this.currentPage } );
   }
 
+  onAdd(){
+    var url;
+    url = Global.BASE_TEMPLATE_ENDPOINT + 'patients';
+    this._service.post(url, 
+      {FirstName:'prajeen1',
+      LastName:'Kumar1',
+      Sex:1,
+      PatientStatus:1,
+      DateCreated:'2017-11-27',
+      DateLastUpdated:'2017-11-27',
+      CreatedByUserId:12,
+      LastUpdatedByUserId:12} )
+    .subscribe(newPatient => {
+      var patient = newPatient.Results;
+    });
+
+  }
+
 
 }
