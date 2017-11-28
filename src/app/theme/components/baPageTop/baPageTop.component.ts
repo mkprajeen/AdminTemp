@@ -41,7 +41,7 @@ export class BaPageTop {
   public scrolledChanged(isScrolled) {
     this.isScrolled = isScrolled;
   }
-  private onSignOut()
+  public onSignOut()
   {
     sessionStorage.setItem("token",null);
     sessionStorage.setItem("LoggedIn",null);
