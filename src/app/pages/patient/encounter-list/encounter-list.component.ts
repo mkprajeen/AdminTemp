@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Global } from '../../../global';
+import { AuthenticationService } from '../../../auth';
 
 @Component({
   selector: 'app-encounter-list',
@@ -6,10 +8,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./encounter-list.component.scss']
 })
 export class EncounterListComponent implements OnInit {
-
-  constructor() { }
+  rows = [];
+  loadingIndicator: boolean = true;
+  columns = [
+    { prop: 'MrPatientEncounterId', sortable: true },
+    { prop: 'PatientId', sortable: true },
+    { prop: 'ChiefComplaint' }
+  ];
+  constructor(private _service: AuthenticationService) { }
 
   ngOnInit() {
+    var url;
+    url = Global.BASE_TEMPLATE_ENDPOINT + 'PatientEncounters';
+    this._service.get(url)
+      .subscribe(pagedData => {
+        this.rows = pagedData;
+      });
   }
 
 }
