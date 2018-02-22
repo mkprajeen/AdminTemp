@@ -39,7 +39,7 @@ export class Login {
     if (this.form.valid) {
       // your code goes here    
 
-      this.authServ.post(Global.BASE_TEMPLATE_ENDPOINT + 'TokenAuthentication/Token', { email: this.email.value, password: this.password.value })
+      this.authServ.post(Global.BASE_API_ENDPOINT + 'TokenAuthentication/Token', { email: this.email.value, password: this.password.value })
         .subscribe(token => {
           if (token.access_token != null) {
             this.authStore.token = token.access_token;
@@ -49,7 +49,7 @@ export class Login {
 
             var appUserId = token.AppUser.ApplicationUserId
             //TODO: get user details and user profile info
-            this.authServ.get(Global.BASE_TEMPLATE_ENDPOINT + 'users/GetUserByApplicationUserId?Id=' + appUserId)
+            this.authServ.get(Global.BASE_API_ENDPOINT + 'users/GetUserByApplicationUserId?Id=' + appUserId)
               .subscribe(user => {
                 this.state.notifyDataChanged("logged.user", user);
                 this.authStore.UserDetail = user ;

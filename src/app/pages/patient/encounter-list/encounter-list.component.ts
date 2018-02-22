@@ -19,7 +19,7 @@ export class EncounterListComponent implements OnInit {
 
   ngOnInit() {
     var url;
-    url = Global.BASE_TEMPLATE_ENDPOINT + 'PatientEncounters';
+    url = Global.BASE_API_ENDPOINT + 'PatientEncounters';
     this._service.get(url)
       .subscribe(pagedData => {
         this.rows = pagedData;

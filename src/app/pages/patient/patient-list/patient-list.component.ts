@@ -35,7 +35,7 @@ export class PatientListComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this._service.get(Global.BASE_TEMPLATE_ENDPOINT + 'patients')
+    // this._service.get(Global.BASE_API_ENDPOINT + 'patients')
     // .subscribe(patient => {
     //   this.rows=patient;
     // });
@@ -46,14 +46,14 @@ export class PatientListComponent implements OnInit {
     var url;
     if (this.orderBy) { 
       if(this.orderByDesc){
-       url = Global.BASE_TEMPLATE_ENDPOINT + 'patients/GetAllPatientsPaged?offset=' + this.currentPage + '&limit=' + this.pageSize +'&orderBy='+ this.orderBy +'&orderByDesc=' + this.orderByDesc ;
+       url = Global.BASE_API_ENDPOINT + 'patients/GetAllPatientsPaged?offset=' + this.currentPage + '&limit=' + this.pageSize +'&orderBy='+ this.orderBy +'&orderByDesc=' + this.orderByDesc ;
       }
       else{
-        url = Global.BASE_TEMPLATE_ENDPOINT + 'patients/GetAllPatientsPaged?offset=' + this.currentPage + '&limit=' + this.pageSize +'&orderBy='+ this.orderBy ; 
+        url = Global.BASE_API_ENDPOINT + 'patients/GetAllPatientsPaged?offset=' + this.currentPage + '&limit=' + this.pageSize +'&orderBy='+ this.orderBy ; 
       }
     }
     else {
-       url = Global.BASE_TEMPLATE_ENDPOINT + 'patients/GetAllPatientsPaged?offset=' + this.currentPage + '&limit=' + this.pageSize;
+       url = Global.BASE_API_ENDPOINT + 'patients/GetAllPatientsPaged?offset=' + this.currentPage + '&limit=' + this.pageSize;
     }
     this._service.get(url)
       .subscribe(pagedData => {
@@ -74,7 +74,7 @@ export class PatientListComponent implements OnInit {
 
   onAdd(){
     var url;
-    url = Global.BASE_TEMPLATE_ENDPOINT + 'patients';
+    url = Global.BASE_API_ENDPOINT + 'patients';
     this._service.post(url, 
       {FirstName:'prajeen1',
       LastName:'Kumar1',
