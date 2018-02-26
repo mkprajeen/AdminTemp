@@ -10,9 +10,12 @@ class="dark"
 [footerHeight]="50"
 [rowHeight]="'auto'"
 [externalPaging]="true"
+[selected]="selected"
+[selectionType]="'single'"
 [count]="totalItems"
 [offset]="currentPage"
 [limit]="pageSize"
+(select)='onSelect($event)'
 (page)='setPage($event)'
 (sort)="onSort($event)">
 </ngx-datatable>

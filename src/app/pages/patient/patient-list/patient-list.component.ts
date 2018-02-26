@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Global } from '../../../global';
-import { AuthenticationService } from '../../../auth';
+import { AuthenticationService, AuthenticationStore } from '../../../auth';
+import { GlobalState } from '../../../global.state'
 
 @Component({
   selector: 'app-patient-list',
@@ -28,7 +29,9 @@ export class PatientListComponent implements OnInit {
     { prop: 'FirstName', sortable: true },
     { prop: 'LastName' }
   ];
-  constructor(private _service: AuthenticationService) {
+  constructor(private _service: AuthenticationService,
+    private authStore: AuthenticationStore,
+    private state: GlobalState) {
     this.currentPage = 0;
     this.pageSize = 10;
     this.totalItems =0;
@@ -71,6 +74,14 @@ export class PatientListComponent implements OnInit {
 
     this.setPage({ offset: this.currentPage } );
   }
+  onSelect({ selected }) {
+    console.log('Select Event', selected, this.selected);
+    if( selected[0] != null){
+      this.authStore.SelectedPatient = selected[0];
+      this.state.notifyDataChanged("selected.patient", selected[0]);
+    }
+  
+  } 
 
   onAdd(){
     var url;

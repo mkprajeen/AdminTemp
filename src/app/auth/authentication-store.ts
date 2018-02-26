@@ -18,6 +18,7 @@ export class AuthenticationStore {
     public token: string;
     public LoggedIn: boolean = false;
     public UserDetail: any;
+    public SelectedPatient: any;
    // protected token$ = new BehaviorSubject<string>(this.token);
 
     //private store = new BehaviorSubject<Array<State>>([]);
