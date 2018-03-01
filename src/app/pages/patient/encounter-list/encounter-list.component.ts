@@ -12,11 +12,11 @@ export class EncounterListComponent implements OnInit {
   rows = [];
   Patient: any;
   loadingIndicator: boolean = true;
-  columns = [
-    { prop: 'MrPatientEncounterId', sortable: true },
-    { prop: 'PatientId', sortable: true },
-    { prop: 'ChiefComplaint' }
-  ];
+  // columns = [
+  //   { prop: 'MrPatientEncounterId', sortable: true },
+  //   { prop: 'PatientId', sortable: true },
+  //   { prop: 'ChiefComplaint' }
+  // ];
   constructor(private _service: AuthenticationService,
     private _state:GlobalState) {
       
@@ -33,5 +33,8 @@ export class EncounterListComponent implements OnInit {
         this.rows = pagedData;
       });
   }
-
+  OnChiefComplaint(row:any)
+  {
+  console.log(row);
+  }
 }
