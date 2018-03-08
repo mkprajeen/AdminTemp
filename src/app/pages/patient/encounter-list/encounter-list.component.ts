@@ -33,8 +33,16 @@ export class EncounterListComponent implements OnInit {
         this.rows = pagedData;
       });
   }
-  OnChiefComplaint(row:any)
-  {
-  console.log(row);
+  OnChiefComplaint(row:any){
+    console.log(row);
+  }
+  onEncounterDelete(id:any){
+    var url;
+    console.log(id);
+    url = Global.BASE_API_ENDPOINT + 'PatientEncounters/'+ id;
+    this._service.delete(url)
+      .subscribe(pagedData => {
+        this.rows = pagedData;
+      });
   }
 }

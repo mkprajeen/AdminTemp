@@ -49,6 +49,16 @@ export class AuthenticationService {
             });
 
     }
+    delete(url: string): Observable<any> {
+        this._spinner.show();
+        return this._http.delete(url)
+            .map((response) => response)
+            .catch(this.handleError).finally(()=>
+            {
+                this._spinner.hide();
+            });
+
+    }
     private handleError(error) {
         console.error(error);       
         return Observable.throw(error || 'Server error');
