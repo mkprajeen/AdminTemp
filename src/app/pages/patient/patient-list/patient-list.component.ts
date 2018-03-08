@@ -101,5 +101,22 @@ export class PatientListComponent implements OnInit {
 
   }
 
+  onUpdate(){
+    if(this.authStore.SelectedPatient === null || this.authStore.SelectedPatient==='Undefind') 
+      {
+        return;
+      }
+    else{
+      var patient = this.authStore.SelectedPatient;
+        patient.FirstName ="prajeen API Update1 ";
+      var url;
+      url = Global.BASE_API_ENDPOINT + 'patients';
+      this._service.put(url, patient )
+      .subscribe(newPatient => {
+        var result = newPatient.Results;
+    });
+    }
+  } 
+
 
 }

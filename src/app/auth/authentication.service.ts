@@ -39,6 +39,16 @@ export class AuthenticationService {
             });
 
     }
+    put(url: string,model:any): Observable<any> {
+        this._spinner.show();
+        return this._http.put(url, model)
+            .map((response) => response)
+            .catch(this.handleError).finally(()=>
+            {
+                this._spinner.hide();
+            });
+
+    }
     private handleError(error) {
         console.error(error);       
         return Observable.throw(error || 'Server error');
