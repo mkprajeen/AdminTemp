@@ -22,7 +22,7 @@
           </ngx-datatable-column>
         <ngx-datatable-column name="Action" prop="MrPatientEncounterId">
           <ng-template let-row="row" let-value="value" ngx-datatable-cell-template >
-            <a style="cursor: pointer;" (click)="onEncounterDelete(value)"><i class="fa fa-trash-o"></i></a>
+            <a style="cursor: pointer;" (click)="onEncounterDelete(row)"><i class="fa fa-trash-o"></i></a>
             </ng-template>
         </ngx-datatable-column>
   </ngx-datatable>

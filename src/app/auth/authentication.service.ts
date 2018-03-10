@@ -1,5 +1,5 @@
 ﻿import { Injectable } from '@angular/core'
-import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http'
+import { HttpClient, HttpHeaders, HttpResponse, HttpRequest } from '@angular/common/http'
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
@@ -52,6 +52,19 @@ export class AuthenticationService {
     delete(url: string): Observable<any> {
         this._spinner.show();
         return this._http.delete(url)
+            .map((response) => response)
+            .catch(this.handleError).finally(()=>
+            {
+                this._spinner.hide();
+            });
+
+    }
+    deleteWithBody(url: string,model:any): Observable<any> {
+        this._spinner.show();
+        let req =   new HttpRequest('DELETE', url);
+        let newReq = req.clone({body: model});
+
+        return this._http.request(newReq)
             .map((response) => response)
             .catch(this.handleError).finally(()=>
             {

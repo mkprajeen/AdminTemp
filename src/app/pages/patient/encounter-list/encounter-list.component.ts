@@ -36,11 +36,11 @@ export class EncounterListComponent implements OnInit {
   OnChiefComplaint(row:any){
     console.log(row);
   }
-  onEncounterDelete(id:any){
+  onEncounterDelete(row:any){
     var url;
-    console.log(id);
-    url = Global.BASE_API_ENDPOINT + 'PatientEncounters/'+ id;
-    this._service.delete(url)
+    console.log(row);
+    url = Global.BASE_API_ENDPOINT + 'PatientEncounters';
+    this._service.deleteWithBody(url,row)
       .subscribe(pagedData => {
         this.rows = pagedData;
       });
