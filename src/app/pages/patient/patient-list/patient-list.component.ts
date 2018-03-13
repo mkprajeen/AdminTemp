@@ -34,7 +34,7 @@ export class PatientListComponent implements OnInit {
     private state: GlobalState) {
     this.currentPage = 0;
     this.pageSize = 10;
-    this.totalItems =0;
+    this.totalItems = 0;
   }
 
   ngOnInit() {
@@ -47,16 +47,16 @@ export class PatientListComponent implements OnInit {
   setPage(pageInfo) {
     this.currentPage = pageInfo.offset;
     var url;
-    if (this.orderBy) { 
-      if(this.orderByDesc){
-       url = Global.BASE_API_ENDPOINT + 'patients/GetAllPatientsPaged?offset=' + this.currentPage + '&limit=' + this.pageSize +'&orderBy='+ this.orderBy +'&orderByDesc=' + this.orderByDesc ;
+    if (this.orderBy) {
+      if (this.orderByDesc) {
+        url = Global.BASE_API_ENDPOINT + 'patients/GetAllPatientsPaged?offset=' + this.currentPage + '&limit=' + this.pageSize + '&orderBy=' + this.orderBy + '&orderByDesc=' + this.orderByDesc;
       }
-      else{
-        url = Global.BASE_API_ENDPOINT + 'patients/GetAllPatientsPaged?offset=' + this.currentPage + '&limit=' + this.pageSize +'&orderBy='+ this.orderBy ; 
+      else {
+        url = Global.BASE_API_ENDPOINT + 'patients/GetAllPatientsPaged?offset=' + this.currentPage + '&limit=' + this.pageSize + '&orderBy=' + this.orderBy;
       }
     }
     else {
-       url = Global.BASE_API_ENDPOINT + 'patients/GetAllPatientsPaged?offset=' + this.currentPage + '&limit=' + this.pageSize;
+      url = Global.BASE_API_ENDPOINT + 'patients/GetAllPatientsPaged?offset=' + this.currentPage + '&limit=' + this.pageSize;
     }
     this._service.get(url)
       .subscribe(pagedData => {
@@ -72,51 +72,66 @@ export class PatientListComponent implements OnInit {
     this.orderBy = sort.prop;
     this.orderByDesc = sort.dir === 'desc' ? true : false;
 
-    this.setPage({ offset: this.currentPage } );
+    this.setPage({ offset: this.currentPage });
   }
   onSelect({ selected }) {
     console.log('Select Event', selected, this.selected);
-    if( selected[0] != null){
+    if (selected[0] != null) {
       this.authStore.SelectedPatient = selected[0];
       this.state.notifyDataChanged("selected.patient", selected[0]);
     }
-  
-  } 
-
-  onAdd(){
-    var url;
-    url = Global.BASE_API_ENDPOINT + 'patients';
-    this._service.post(url, 
-      {FirstName:'prajeen1',
-      LastName:'Kumar1',
-      Sex:1,
-      PatientStatus:1,
-      DateCreated:'2017-11-27',
-      DateLastUpdated:'2017-11-27',
-      CreatedByUserId:12,
-      LastUpdatedByUserId:12} )
-    .subscribe(newPatient => {
-      var patient = newPatient.Results;
-    });
 
   }
 
-  onUpdate(){
-    if(this.authStore.SelectedPatient === null || this.authStore.SelectedPatient==='Undefind') 
+  onAdd() {
+    var url;
+    url = Global.BASE_API_ENDPOINT + 'patients';
+    this._service.post(url,
       {
-        return;
-      }
-    else{
+        FirstName: 'prajeen1',
+        LastName: 'Kumar1',
+        Sex: 1,
+        PatientStatus: 1,
+        DateCreated: '2017-11-27',
+        DateLastUpdated: '2017-11-27',
+        CreatedByUserId: 12,
+        LastUpdatedByUserId: 12
+      })
+      .subscribe(newPatient => {
+        var patient = newPatient.Results;
+      });
+
+  }
+
+  onUpdate() {
+    if (this.authStore.SelectedPatient === null || this.authStore.SelectedPatient === 'Undefind') {
+      return;
+    }
+    else {
       var patient = this.authStore.SelectedPatient;
-        patient.FirstName ="prajeen API Update1 ";
+      patient.FirstName = "prajeen API Update1 ";
       var url;
       url = Global.BASE_API_ENDPOINT + 'patients';
-      this._service.put(url, patient )
-      .subscribe(newPatient => {
-        var result = newPatient.Results;
-    });
+      this._service.put(url, patient)
+        .subscribe(newPatient => {
+          var result = newPatient.Results;
+        });
     }
-  } 
+  }
+  onDelete() {
+    if (this.authStore.SelectedPatient === null || this.authStore.SelectedPatient === 'Undefind') {
+      return;
+    }
+    else {
+      var patient = this.authStore.SelectedPatient;      
+      var url;
+      url = Global.BASE_API_ENDPOINT + 'patients';
+      this._service.deleteWithBody(url, patient)
+        .subscribe(newPatient => {
+          var result = newPatient.Results;
+        });
+    }
+  }
 
 
 }

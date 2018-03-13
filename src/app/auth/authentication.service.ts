@@ -7,8 +7,8 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/finally';
 import 'rxjs/add/observable/throw';
 
-import {GlobalState} from '../global.state';
-import {BaThemeSpinner} from '../theme/services'
+import { GlobalState } from '../global.state';
+import { BaThemeSpinner } from '../theme/services'
 
 @Injectable()
 export class AuthenticationService {
@@ -17,34 +17,34 @@ export class AuthenticationService {
 
     }
     get(url: string): Observable<any> {
-      this._spinner.show();
+        this._spinner.show();
         return this._http.get(url)
-            .map((response: Response) => { 
+            .map((response: Response) => {
                 this._spinner.hide();
-                return <any>response;})
+                return <any>response;
+            })
             .catch(this.handleError)
-            .finally(()=>
-            {
+            .finally(() => {
                 this._spinner.hide();
             });
 
     }
-    post(url: string,model:any): Observable<any> {
+    post(url: string, model: any): Observable<any> {
         this._spinner.show();
         return this._http.post(url, model)
             .map((response) => response)
-            .catch(this.handleError).finally(()=>
-            {
+            .catch(this.handleError)
+            .finally(() => {
                 this._spinner.hide();
             });
 
     }
-    put(url: string,model:any): Observable<any> {
+    put(url: string, model: any): Observable<any> {
         this._spinner.show();
         return this._http.put(url, model)
             .map((response) => response)
-            .catch(this.handleError).finally(()=>
-            {
+            .catch(this.handleError)
+            .finally(() => {
                 this._spinner.hide();
             });
 
@@ -53,28 +53,28 @@ export class AuthenticationService {
         this._spinner.show();
         return this._http.delete(url)
             .map((response) => response)
-            .catch(this.handleError).finally(()=>
-            {
+            .catch(this.handleError)
+            .finally(() => {
                 this._spinner.hide();
             });
 
     }
-    deleteWithBody(url: string,model:any): Observable<any> {
+    deleteWithBody(url: string, model: any): Observable<any> {
         this._spinner.show();
-        let req =   new HttpRequest('DELETE', url);
-        let newReq = req.clone({body: model});
+        let req = new HttpRequest('DELETE', url);
+        let newReq = req.clone({ body: model });
 
         return this._http.request(newReq)
             .map((response) => response)
-            .catch(this.handleError).finally(()=>
-            {
+            .catch(this.handleError)
+            .finally(() => {
                 this._spinner.hide();
             });
 
     }
     private handleError(error) {
-        console.error(error);       
+        console.error(error);
         return Observable.throw(error || 'Server error');
     }
-   
+
 }
