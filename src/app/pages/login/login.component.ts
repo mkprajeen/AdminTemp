@@ -19,6 +19,7 @@ export class Login {
   public submitted: boolean = false;
 
   errorMessage: string;
+  ifError:boolean=false;
 
   constructor(fb: FormBuilder,
     private router: Router,
@@ -36,10 +37,11 @@ export class Login {
 
   public onSubmit(values: Object): void {
     this.submitted = true;
+    this.ifError=false;
     if (this.form.valid) {
       // your code goes here    
 
-      this.authServ.post(Global.BASE_API_ENDPOINT + 'TokenAuthentication/Token', { email: this.email.value, password: this.password.value })
+      this.authServ.Login(Global.BASE_API_ENDPOINT + 'TokenAuthentication/Token', { email: this.email.value, password: this.password.value })
         .subscribe(token => {
           if (token.access_token != null) {
             this.authStore.token = token.access_token;
@@ -57,14 +59,19 @@ export class Login {
                 
               },
               error => {
-                this.errorMessage = <any>error;
+                this.errorMessage = error;
                 console.log(this.errorMessage);
               });
 
             this.router.navigate(['/dashboard']);
           }
         },
-        error => this.errorMessage = <any>error);
+        error => 
+        {
+          this.ifError=true;
+          console.log(error);
+          this.errorMessage = error.error;
+        });
     }
 
     console.log(values);

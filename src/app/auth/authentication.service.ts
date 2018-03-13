@@ -16,6 +16,11 @@ export class AuthenticationService {
     constructor(private _http: HttpClient, private _spinner: BaThemeSpinner) {
 
     }
+    Login(url: string, model: any): Observable<any> {
+        return this._http.post(url, model)
+            .map((response) => response);
+    }
+
     get(url: string): Observable<any> {
         this._spinner.show();
         return this._http.get(url)
