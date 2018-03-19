@@ -1,0 +1,28 @@
+﻿<div class="container">
+    <!--<ul class="nav nav-tabs">
+        <li *ngFor="let section of encounterSections">
+            <a>{{section.SectionHeading}} </a>
+            <dynamic-form *ngIf="section.SectionHeading" [config]="section.MrFormFields">loading...</dynamic-form>
+        </li>
+
+    </ul>-->
+
+    <!--<kendo-tabstrip>
+        <kendo-tabstrip-tab *ngFor="let section of encounterSections" [title]="section.SectionHeading">
+            <ng-template kendoTabContent>
+                <dynamic-form *ngIf="section.SectionHeading" [config]="section.MrFormFields">loading...</dynamic-form>
+            </ng-template>
+        </kendo-tabstrip-tab>
+    </kendo-tabstrip>-->
+
+    <md-tab-group>
+        <md-tab *ngFor="let section of encounterSections" [label]="section.SectionHeading">
+            <dynamic-form *ngIf="section.SectionHeading" [config]="section.MrFormFields">loading...</dynamic-form>
+        </md-tab>
+    </md-tab-group>
+    <!--<dynamic-form  *ngFor="let section of encounterSections" [config]="section.MrFormFields">loading...</dynamic-form>-->
+
+</div>
+
+
+
