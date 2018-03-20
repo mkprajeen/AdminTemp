@@ -15,11 +15,11 @@
         </kendo-tabstrip-tab>
     </kendo-tabstrip>-->
 
-    <md-tab-group>
-        <md-tab *ngFor="let section of encounterSections" [label]="section.SectionHeading">
+    <mat-tab-group>
+        <mat-tab *ngFor="let section of encounterSections" [label]="section.SectionHeading">
             <dynamic-form *ngIf="section.SectionHeading" [config]="section.MrFormFields">loading...</dynamic-form>
-        </md-tab>
-    </md-tab-group>
+        </mat-tab>
+    </mat-tab-group>
     <!--<dynamic-form  *ngFor="let section of encounterSections" [config]="section.MrFormFields">loading...</dynamic-form>-->
 
 </div>

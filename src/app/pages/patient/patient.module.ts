@@ -7,6 +7,7 @@ import {PatientListComponent} from './patient-list';
 import { EncounterListComponent } from './encounter-list'
 import { ProgressNoteComponent } from './progress-note';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { MainFormComponent } from './../../dynamicforms/main-form/main-form.component'
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
     Patient,
    PatientListComponent,
    EncounterListComponent,
-   ProgressNoteComponent
+   ProgressNoteComponent,
+   MainFormComponent
   ]
 })
 export class PatientModule { }
