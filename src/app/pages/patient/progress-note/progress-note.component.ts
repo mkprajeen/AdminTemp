@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-progressnote',
@@ -7,10 +8,13 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class ProgressNoteComponent implements OnInit {
-
-  constructor() { }
+  id: any;
+  constructor(private activeroute: ActivatedRoute) { }
 
   ngOnInit() {
+    this.activeroute.params.subscribe(params => {
+      this.id = params.id; 
+   });
   }
 
 }

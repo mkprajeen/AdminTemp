@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Global } from '../../../global';
 import { AuthenticationService } from '../../../auth';
 import {GlobalState} from '../../../global.state';
@@ -18,7 +19,7 @@ export class EncounterListComponent implements OnInit {
   //   { prop: 'ChiefComplaint' }
   // ];
   constructor(private _service: AuthenticationService,
-    private _state:GlobalState) {
+    private _state:GlobalState, private router: Router,) {
       
       this._state.subscribe('selected.patient', (spatient) => {
         this.Patient = spatient;
@@ -34,7 +35,10 @@ export class EncounterListComponent implements OnInit {
       });
   }
   OnChiefComplaint(row:any){
-    console.log(row);
+    //console.log(row);
+    //this.router.navigate(['patient-list']);
+    //this.router.navigate(['/pages/patient/progress-note']);
+    //this.router.navigateByUrl('/pages/patient/patient-list');
   }
   onEncounterDelete(row:any){
     var url;

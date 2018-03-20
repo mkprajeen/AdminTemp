@@ -1,7 +1,7 @@
 ﻿import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { UINotificationService } from '../../shared/uinotification.service'
-import { mr_form_field } from '../../models/entities/mr_form_field'
+//import { UINotificationService } from '../../shared/uinotification.service'
+//import { mr_form_field } from '../../models/entities/mr_form_field'
 
 @Component({
     selector: 'dynamic-form',
@@ -31,7 +31,7 @@ export class DynamicFormComponent implements OnInit {
 
     form: FormGroup;
 
-    constructor(private fb: FormBuilder, private uiNotiServ: UINotificationService) {
+    constructor(private fb: FormBuilder) {
         //this.uiNotiServ.dynamicControls.subscribe(ctrols => {
         //    this.config = ctrols;
         //    this.form = this.createGroup();

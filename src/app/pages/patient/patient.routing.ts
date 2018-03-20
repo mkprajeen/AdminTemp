@@ -15,7 +15,7 @@ export const routes: Routes = [
     children: [
       { path: 'patient-list', component: PatientListComponent },
       { path: 'encounter-list', component: EncounterListComponent },
-      { path: 'progress-note', component: ProgressNoteComponent }
+      { path: 'progress-note/:id', component: ProgressNoteComponent }
       
     ]
   }

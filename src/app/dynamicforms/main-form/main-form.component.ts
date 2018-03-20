@@ -1,6 +1,6 @@
 ﻿import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { UINotificationService } from '../../../shared/uinotification.service'
+//import { UINotificationService } from '../../../shared/uinotification.service'
 
 
 @Component({
@@ -15,11 +15,11 @@ export class MainFormComponent implements OnInit {
    public submitted: boolean;
 
 
-   constructor(private fb: FormBuilder, private uiNotiServ: UINotificationService) {
-       this.uiNotiServ.dynamicSections.subscribe(enSection => {
-           this.encounterSections = enSection;
-       });
-   }
+//    constructor(private fb: FormBuilder, private uiNotiServ: UINotificationService) {
+//        this.uiNotiServ.dynamicSections.subscribe(enSection => {
+//            this.encounterSections = enSection;
+//        });
+//    }
     ngOnInit(){
 
 
