@@ -1,6 +1,6 @@
 ﻿import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-//import { UINotificationService } from '../../../shared/uinotification.service'
+import { GlobalState } from '../../global.state';
 
 
 @Component({
@@ -8,23 +8,24 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
     templateUrl: './main-form.component.html'
 })
 export class MainFormComponent implements OnInit {
-   // @Input()
+    // @Input()
     encounterSections: any[] = [];
 
-   public referer: FormGroup;
-   public submitted: boolean;
+    public referer: FormGroup;
+    public submitted: boolean;
 
 
-//    constructor(private fb: FormBuilder, private uiNotiServ: UINotificationService) {
-//        this.uiNotiServ.dynamicSections.subscribe(enSection => {
-//            this.encounterSections = enSection;
-//        });
-//    }
-    ngOnInit(){
+    constructor(private fb: FormBuilder, private _state: GlobalState, ) {
+        this._state.subscribe('progressnote.encounter', (enSection) => {
+            this.encounterSections = enSection;
+
+        });
+    }
+    ngOnInit() {
 
 
     }
-    onSubmit({ value, valid } : { value: any, valid: boolean }){
+    onSubmit({ value, valid }: { value: any, valid: boolean }) {
         this.submitted = true;
         console.log(value, valid);
 

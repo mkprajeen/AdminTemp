@@ -1,6 +1,10 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
+import { Global } from '../../../global';
+import { GlobalState } from '../../../global.state';
+import { AuthenticationService, AuthenticationStore } from '../../../auth';
+
 @Component({
   selector: 'app-progressnote',
   templateUrl: './progress-note.component.html',
@@ -9,12 +13,35 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProgressNoteComponent implements OnInit {
   id: any;
-  constructor(private activeroute: ActivatedRoute) { }
+  encounterSections: any[];
+  errorMessage: any;
+
+  constructor(private activeroute: ActivatedRoute,
+    private authServ: AuthenticationService,
+    private authStore: AuthenticationStore,
+    private state: GlobalState) {
+
+  }
 
   ngOnInit() {
     this.activeroute.params.subscribe(params => {
-      this.id = params.id; 
-   });
+      this.id = params.id;
+    });
+    this.authServ.get(Global.BASE_API_ENDPOINT + 'templatebuilder/GetSectionsForTemplateGroup?templateGroupId=43')
+      .subscribe(enSections => {
+        this.encounterSections = [];
+        this.encounterSections = enSections;
+
+        this.state.notifyDataChanged('progressnote.encounter', enSections);
+
+      },
+        error => {
+          this.errorMessage = error;
+          console.log(this.errorMessage);
+        });
+
   }
+
+
 
 }
