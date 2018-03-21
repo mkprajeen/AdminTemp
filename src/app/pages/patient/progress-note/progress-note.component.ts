@@ -12,7 +12,7 @@ import { AuthenticationService, AuthenticationStore } from '../../../auth';
   encapsulation: ViewEncapsulation.None
 })
 export class ProgressNoteComponent implements OnInit {
-  id: any;
+  tempGrpId: any;
   encounterSections: any[];
   errorMessage: any;
 
@@ -25,9 +25,9 @@ export class ProgressNoteComponent implements OnInit {
 
   ngOnInit() {
     this.activeroute.params.subscribe(params => {
-      this.id = params.id;
+      this.tempGrpId = params.id;
     });
-    this.authServ.get(Global.BASE_API_ENDPOINT + 'templatebuilder/GetSectionsForTemplateGroup?templateGroupId=43')
+    this.authServ.get(Global.BASE_API_ENDPOINT + 'templatebuilder/GetSectionsForTemplateGroup?templateGroupId=' + this.tempGrpId )
       .subscribe(enSections => {
         this.encounterSections = [];
         this.encounterSections = enSections;

@@ -20,7 +20,7 @@
              <a href="" (click)= "OnChiefComplaint(row)" >{{value}}</a>
             </ng-template>             -->
             <ng-template let-value="value"  let-row="row" ngx-datatable-cell-template>
-              <a [routerLink]="['/pages/patient/progress-note', row['MrPatientEncounterId']]" skipLocationChange>
+              <a [routerLink]="['/pages/patient/progress-note', row['MrTemplateGroupId']]" skipLocationChange>
                 <span>{{value}}</span>
               </a>
              </ng-template>  

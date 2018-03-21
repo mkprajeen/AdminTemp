@@ -8,12 +8,16 @@ import { EncounterListComponent } from './encounter-list'
 import { ProgressNoteComponent } from './progress-note';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { MainFormComponent } from './../../dynamicforms/main-form/main-form.component'
+import { DynamicFormModule} from './../../dynamicforms/dynamic-form.module'
+import {MatTabsModule} from '@angular/material/tabs';
 
 @NgModule({
   imports: [
     CommonModule,
     routing,
     NgxDatatableModule,
+    MatTabsModule,
+    DynamicFormModule
   ],
   declarations: [
     Patient,

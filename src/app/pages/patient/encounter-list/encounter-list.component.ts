@@ -36,9 +36,8 @@ export class EncounterListComponent implements OnInit {
   }
   OnChiefComplaint(row:any){
     //console.log(row);
-    //this.router.navigate(['patient-list']);
-    //this.router.navigate(['/pages/patient/progress-note']);
-    //this.router.navigateByUrl('/pages/patient/patient-list');
+    this.router.navigate(['/pages/patient/progress-note']);
+
   }
   onEncounterDelete(row:any){
     var url;

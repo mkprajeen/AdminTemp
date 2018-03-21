@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS} from "@angular/common/http";
 import { TranslateService } from '@ngx-translate/core';
 import {MatTabsModule} from '@angular/material/tabs';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { routing } from './app.routing';
 import { PagesModule } from './pages/pages.module';
@@ -35,6 +36,7 @@ const APP_PROVIDERS = [
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
     MatTabsModule,
     ThemeModule.forRoot(),
     routing,
