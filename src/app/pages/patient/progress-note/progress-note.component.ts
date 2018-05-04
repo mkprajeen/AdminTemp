@@ -42,6 +42,8 @@ export class ProgressNoteComponent implements OnInit {
 
   }
 
-
+  formSubmitted(value) {
+    console.log(value);
+}
 
 }

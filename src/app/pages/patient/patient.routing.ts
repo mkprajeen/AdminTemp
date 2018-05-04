@@ -5,6 +5,7 @@ import {Patient} from './patient.component'
 import { PatientListComponent } from './patient-list';
 import { EncounterListComponent } from './encounter-list'
 import { ProgressNoteComponent } from './progress-note'
+import { ProgressNoteNewComponent } from './progress-note-new'
 
 
 // noinspection TypeScriptValidateTypes
@@ -15,7 +16,8 @@ export const routes: Routes = [
     children: [
       { path: 'patient-list', component: PatientListComponent },
       { path: 'encounter-list', component: EncounterListComponent },
-      { path: 'progress-note/:id', component: ProgressNoteComponent }
+      { path: 'progress-note/:id', component: ProgressNoteComponent },
+      { path: 'progress-note-new/:id', component: ProgressNoteNewComponent }
       
     ]
   }
